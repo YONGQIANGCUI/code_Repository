@@ -97,7 +97,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-		_mcu_heart_process();
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -200,16 +200,27 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(_MCU_HEART_LED_GPIO_Port, _MCU_HEART_LED_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin : PC13 */
-  GPIO_InitStruct.Pin = GPIO_PIN_13;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, OLED_IIC_SCL_Pin|OLED_IIC_SDA_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin : _MCU_HEART_LED_Pin */
+  GPIO_InitStruct.Pin = _MCU_HEART_LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+  HAL_GPIO_Init(_MCU_HEART_LED_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : OLED_IIC_SCL_Pin OLED_IIC_SDA_Pin */
+  GPIO_InitStruct.Pin = OLED_IIC_SCL_Pin|OLED_IIC_SDA_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
@@ -252,6 +263,7 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
+		
   }
   /* USER CODE END Error_Handler_Debug */
 }
