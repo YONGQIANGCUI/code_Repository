@@ -31,3 +31,6 @@ keil_project\main.o: ../Inc/api_misc.h
 keil_project\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 keil_project\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 keil_project\main.o: ../Inc/app_process.h
+keil_project\main.o: ../Inc/oled_0_96_driver.h
+keil_project\main.o: ../Inc/picture.h
+keil_project\main.o: ../Inc/api_delay.h

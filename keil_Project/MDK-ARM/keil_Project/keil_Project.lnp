@@ -2,6 +2,8 @@
 "keil_project\startup_stm32f103xb.o"
 "keil_project\api_misc.o"
 "keil_project\app_process.o"
+"keil_project\oled_0_96_driver.o"
+"keil_project\api_delay.o"
 "keil_project\main.o"
 "keil_project\stm32f1xx_it.o"
 "keil_project\stm32f1xx_hal_msp.o"
